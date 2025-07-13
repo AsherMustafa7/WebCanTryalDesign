@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body{
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+    color: #1E1E1E;
+    background-color: #CDCDCD;
+    background-image: repeating-linear-gradient(to right, transparent 0 150px,#0001 150px 151px),
+    repeating-linear-gradient(to bottom, transparent 0 150px,#0001 150px 151px),
+    linear-gradient(to right ,#CDCDCDcc,#ca3e3ecc),
+    /* it says start from this color go to that color */
+    url(images/bg.jpg);
+}
+/* jus know the above is magical */
+header{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 4%;
+    margin-right: 4%;
+    height: 50vh;
+    
+}
+.author img{
+    width: 60%;
+}
+.author{
+    width: 10%;
+    padding-top: 3%;
+    text-align: right;
+}
+.author div{
+    display: flex;
+    justify-content: space-between;
+}
+.Left h1{
+    font-size: 500%;
+}
+
+.banner{
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    overflow: hidden;
+    position: absolute;
+    
+    z-index: 99;
+}
+.banner .products{
+    
+    width: 500px;
+    height: 500px;
+    position: relative;
+    top: calc(20%);
+    left: calc(30%);
+    z-index: 1;
+    transition: 0.7s;
+    --left:100px;
+    display: flex;
+}
+.banner .products .soda{ 
+    background: 
+    url(images/bg1.png) var(--left) -22px,
+    url(images/freepik__upload__47753.png);
+    background-size: auto 110%;
+    
+    width: 500px;
+    aspect-ratio: 2/2;
+    background-blend-mode: multiply;
+    
+    mask-image: url(images/freepik__upload__47753.png);
+    mask-size: auto 110%;
+    transition: 0.7s ;
+}
+.banner .products .soda:hover{
+    --left:750px;
+    background: 
+    url(images/bg2.png) var(--left) -22px,
+    url(images/freepik__upload__47753.png);
+    background-size: auto 110%;
+    
+    width: 500px;
+    aspect-ratio: 2/2;
+    /* you can also make the image go back if you are to chnage the aspect ratino a bit */
+    background-blend-mode: multiply;
+    transform: translateX(0) translateY(-120px);
+    
+    mask-image: url(images/freepik__upload__47753.png);
+    mask-size: auto 110%;
+    transition: 0.7s ;
+}
+.rock{
+    position: absolute;
+    inset: 0 0 0 0;
+}
+.banner .rock img{
+    position: absolute;
+    transition: 0.7s;
+}
+.banner .rock img:nth-child(1){
+    height: 170px;
+    left: 50%;
+    transform: translateX(-60%);
+    bottom: -5px;
+}
+/*  now when we hover over product then teh rock should move 
+but the rock is not a product so we use has */
+.banner:has(.products:hover) .rock img:nth-child(1){
+    transform: translateX(-60%) translateY(50%);
+    
+}
+.banner .rock img:nth-child(2){
+    height:500px;
+    bottom: 0px;
+}
+.banner .rock img:nth-child(3){
+    height:850px;
+    bottom: -80px;
+    left: 65%;
+    rotate: -20deg;
+}
+.banner:has(.products:hover) .rock img:nth-child(2){
+    transform: translateX(-10%) translateY(30%);
+    
+}
+.banner:has(.products:hover) .rock img:nth-child(3){
+    transform: translateX(10%) translateY(30%);
+    
+}
